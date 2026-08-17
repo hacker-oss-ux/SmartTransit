@@ -163,7 +163,7 @@ export const ParentPortal: React.FC = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-3.5 h-3.5 rounded-full bg-emerald-400 animate-ping" />
                   <h1 className="text-2xl sm:text-3xl font-black font-heading text-white">
-                    Ajay is travelling safely
+                    Dummy is travelling safely
                   </h1>
                 </div>
                 <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-1">
@@ -274,7 +274,7 @@ export const ParentPortal: React.FC = () => {
                 <div className="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-sm flex items-center justify-between">
                   <div>
                     <span className="text-xs text-slate-400 font-bold uppercase tracking-wider block">
-                      Ajay's Card Balance
+                      Dummy's Card Balance
                     </span>
                     <div className="text-2xl font-black text-slate-900 font-mono mt-0.5">
                       ₹{card.balance}
@@ -559,7 +559,7 @@ export const ParentPortal: React.FC = () => {
               <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6">
                 <div>
                   <h3 className="text-lg font-extrabold text-slate-900">
-                    Recharge Ajay's SmartTransit Card
+                    Recharge Dummy's SmartTransit Card
                   </h3>
                   <p className="text-xs text-slate-500">
                     Instant digital top-up via Google Pay, Zero-MDR UPI or Semester Pass.

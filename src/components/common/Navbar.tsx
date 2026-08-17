@@ -31,7 +31,7 @@ export const Navbar: React.FC = () => {
 
   const roleNavItems: { key: UserRole; label: string; icon: React.ReactNode; badge?: string }[] = [
     { key: 'landing', label: 'Overview', icon: <ExternalLink className="w-4 h-4" /> },
-    { key: 'student', label: 'Student Portal', icon: <CreditCard className="w-4 h-4" />, badge: 'Ajay' },
+    { key: 'student', label: 'Student Portal', icon: <CreditCard className="w-4 h-4" />, badge: 'Dummy' },
     { key: 'parent', label: 'Parent Portal', icon: <ShieldCheck className="w-4 h-4" />, badge: 'Live Tracking' },
     { key: 'operator', label: 'Bus Console', icon: <Bus className="w-4 h-4" />, badge: 'ST-102' },
   ];

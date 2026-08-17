@@ -148,7 +148,7 @@ export const StudentPortal: React.FC = () => {
                   <span>Student Mobility Console</span>
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold font-heading text-white">
-                  Welcome back, Ajay 👋
+                  Welcome back, Dummy 👋
                 </h1>
                 <p className="text-xs sm:text-sm text-slate-300">
                   Here's your journey and smart concession status at a glance.

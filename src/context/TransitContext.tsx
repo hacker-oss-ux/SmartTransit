@@ -267,8 +267,8 @@ export const TransitProvider: React.FC<{ children: ReactNode }> = ({ children })
         id: `notif_${Date.now()}_p`,
         targetRole: 'PARENT',
         category: 'journey',
-        title: 'Ajay Boarded Bus ST-102',
-        message: `Ajay tapped SmartTransit card and boarded Bus ST-102 at ${timeString}. Concession fare ₹${customFare} deducted.`,
+        title: 'Dummy Boarded Bus ST-102',
+        message: `Dummy tapped SmartTransit card and boarded Bus ST-102 at ${timeString}. Concession fare ₹${customFare} deducted.`,
         timestamp: timeString,
         read: false,
         busId: 'ST-102',
@@ -316,8 +316,8 @@ export const TransitProvider: React.FC<{ children: ReactNode }> = ({ children })
         id: `notif_${Date.now()}_p_arr`,
         targetRole: 'PARENT',
         category: 'journey',
-        title: 'Ajay Arrived at College Campus',
-        message: `Ajay completed his journey safely at St. Thomas College Campus at ${timeString}.`,
+        title: 'Dummy Arrived at College Campus',
+        message: `Dummy completed his journey safely at St. Thomas College Campus at ${timeString}.`,
         timestamp: timeString,
         read: false,
         busId: 'ST-102',
@@ -326,7 +326,7 @@ export const TransitProvider: React.FC<{ children: ReactNode }> = ({ children })
       };
 
       setNotifications(prev => [parentNotif, ...prev]);
-      showToast('Journey Completed', 'Ajay reached the college safely. Parent notified via Push + SMS.', 'success');
+      showToast('Journey Completed', 'Dummy reached the college safely. Parent notified via Push + SMS.', 'success');
     }
 
     // Check if Auto-Reload is triggered by low balance threshold
@@ -384,7 +384,7 @@ export const TransitProvider: React.FC<{ children: ReactNode }> = ({ children })
           targetRole: 'PARENT',
           category: 'payment',
           title: `Recharge Successful: +₹${amount}`,
-          message: `₹${amount} successfully added to Ajay's SmartTransit card. Updated balance: ₹${newBalance}.`,
+          message: `₹${amount} successfully added to Dummy's SmartTransit card. Updated balance: ₹${newBalance}.`,
           timestamp: timeString,
           read: false,
           sentViaSms: true,
@@ -401,7 +401,7 @@ export const TransitProvider: React.FC<{ children: ReactNode }> = ({ children })
         };
 
         setNotifications(prev => [parentNotif, studentNotif, ...prev]);
-        showToast('Payment Successful', `₹${amount} added to Ajay's SmartTransit Card. New balance: ₹${newBalance}`, 'success');
+        showToast('Payment Successful', `₹${amount} added to Dummy's SmartTransit Card. New balance: ₹${newBalance}`, 'success');
 
         resolve({ success: true, transactionId: txId });
       }, 1000);
