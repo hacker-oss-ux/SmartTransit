@@ -117,7 +117,7 @@ export const SmartCardGraphic: React.FC<SmartCardGraphicProps> = ({
             {/* Signature & Security Panel */}
             <div className="grid grid-cols-3 gap-2 items-center my-1">
               <div className="col-span-2 bg-slate-100/90 text-slate-800 p-2 rounded text-[10px] font-mono flex items-center justify-between">
-                <span className="italic font-bold">Ajay Girish</span>
+                <span className="italic font-bold">Dummy Data</span>
                 <span className="text-[8px] bg-slate-200 px-1 py-0.5 rounded font-bold">284</span>
               </div>
               <div className="flex flex-col items-center justify-center p-1 bg-white/5 rounded border border-white/10">
