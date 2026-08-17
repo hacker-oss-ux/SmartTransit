@@ -752,8 +752,13 @@ export const LandingPage: React.FC = () => {
       <footer className="bg-slate-950 text-slate-400 text-xs py-12 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-800/80 pb-8">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center gap-3 hover:opacity-80 transition group"
+              aria-label="Scroll to top"
+              title="Back to top"
+            >
+              <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold group-hover:bg-blue-500 transition">
                 ST
               </div>
               <div>
@@ -761,10 +766,10 @@ export const LandingPage: React.FC = () => {
                   SmartTransit
                 </span>
                 <p className="text-[11px] text-slate-400">
-                  An Integrated Student Mobility, Payment & Safety Platform
+                  An Integrated Student Mobility, Payment &amp; Safety Platform
                 </p>
               </div>
-            </div>
+            </button>
 
             <div className="text-slate-400 text-center sm:text-right font-medium">
               <p>One Card. One Journey. Complete Peace of Mind.</p>
