@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTransit } from '../context/TransitContext';
 import { SmartCardGraphic } from '../components/common/SmartCardGraphic';
 import { LiveMap } from '../components/common/LiveMap';
@@ -15,7 +15,223 @@ import {
   QrCode,
   CheckCircle2,
   Cpu,
+  MessageSquare,
+  Star,
+  Send,
+  Mail,
+  Phone,
+  MapPin,
 } from 'lucide-react';
+
+/* ============================================================
+   FEEDBACK SECTION — self-contained sub-component
+   ============================================================ */
+const CATEGORIES = ['General Experience', 'Student App', 'Parent Tracking', 'Payment & Card', 'Bus & Routes', 'Safety Features'];
+
+const FeedbackSection: React.FC = () => {
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
+  const [category, setCategory] = useState('');
+  const [message, setMessage] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!rating || !message.trim()) return;
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="max-w-xl mx-auto px-4 text-center space-y-4 py-8">
+        <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-400/30 flex items-center justify-center mx-auto">
+          <CheckCircle2 className="w-8 h-8 text-emerald-500" />
+        </div>
+        <h3 className="text-2xl font-extrabold text-slate-900 font-heading">Thank you, {name || 'friend'}! 🎉</h3>
+        <p className="text-slate-500 text-sm leading-relaxed">
+          Your feedback has been received. We read every response and use it to make SmartTransit better for every student and parent on every route.
+        </p>
+        <button
+          onClick={() => { setSubmitted(false); setRating(0); setMessage(''); setName(''); setEmail(''); setCategory(''); }}
+          className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition"
+        >
+          <MessageSquare className="w-4 h-4" />
+          Submit Another
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Section header */}
+      <div className="text-center mb-14 space-y-3">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/80 border border-blue-200 text-blue-800 text-xs font-bold shadow-2xs">
+          <MessageSquare className="w-3.5 h-3.5 text-blue-600" />
+          <span>Contact Us & Feedback</span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight">
+          We'd Love to Hear from You
+        </h2>
+        <p className="text-slate-500 max-w-xl mx-auto text-base leading-relaxed">
+          Share your experience, report issues, or suggest improvements. Every piece of feedback helps us build a safer, smarter student transit system.
+        </p>
+      </div>
+
+      <div className="grid lg:grid-cols-5 gap-10 items-start">
+
+        {/* ── Left: contact info cards ── */}
+        <div className="lg:col-span-2 space-y-4">
+          {[
+            { icon: <Mail className="w-5 h-5 text-blue-600" />, label: 'Email Support', value: 'support@smarttransit.in', sub: 'We reply within 24 hours' },
+            { icon: <Phone className="w-5 h-5 text-emerald-600" />, label: 'Helpline', value: '+91 98470 00000', sub: 'Mon – Sat · 8 AM – 8 PM IST' },
+            { icon: <MapPin className="w-5 h-5 text-indigo-600" />, label: 'Registered Office', value: 'St. Thomas College Campus', sub: 'Pala, Kottayam – 686575, Kerala' },
+          ].map(c => (
+            <div key={c.label} className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0">
+                {c.icon}
+              </div>
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-slate-400">{c.label}</div>
+                <div className="text-sm font-semibold text-slate-800 mt-0.5">{c.value}</div>
+                <div className="text-xs text-slate-400 mt-0.5">{c.sub}</div>
+              </div>
+            </div>
+          ))}
+
+          {/* Quick stats */}
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white space-y-3 shadow-lg shadow-blue-500/20">
+            <div className="text-xs font-bold uppercase tracking-wider text-blue-200">Response Stats</div>
+            {[
+              { label: 'Avg. Response Time', value: '< 4 hrs' },
+              { label: 'Issues Resolved', value: '99.1%' },
+              { label: 'User Satisfaction', value: '4.8 / 5 ⭐' },
+            ].map(s => (
+              <div key={s.label} className="flex items-center justify-between text-sm">
+                <span className="text-blue-200">{s.label}</span>
+                <span className="font-bold text-white">{s.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Right: feedback form ── */}
+        <form onSubmit={handleSubmit} className="lg:col-span-3 bg-white border border-slate-200/90 rounded-3xl shadow-sm p-6 sm:p-8 space-y-6">
+
+          {/* Star rating */}
+          <div>
+            <label className="block text-sm font-bold text-slate-700 mb-2">Overall Experience</label>
+            <div className="flex items-center gap-2">
+              {[1, 2, 3, 4, 5].map(star => (
+                <button
+                  key={star}
+                  type="button"
+                  onClick={() => setRating(star)}
+                  onMouseEnter={() => setHoverRating(star)}
+                  onMouseLeave={() => setHoverRating(0)}
+                  className="transition-transform hover:scale-110 active:scale-95"
+                  aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
+                >
+                  <Star
+                    className={`w-8 h-8 transition-colors ${
+                      star <= (hoverRating || rating)
+                        ? 'fill-amber-400 text-amber-400'
+                        : 'text-slate-200 fill-slate-200'
+                    }`}
+                  />
+                </button>
+              ))}
+              {rating > 0 && (
+                <span className="ml-2 text-sm font-semibold text-slate-600">
+                  {['', 'Poor', 'Fair', 'Good', 'Great', 'Excellent!'][rating]}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Category chips */}
+          <div>
+            <label className="block text-sm font-bold text-slate-700 mb-2">Feedback Category</label>
+            <div className="flex flex-wrap gap-2">
+              {CATEGORIES.map(cat => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setCategory(cat === category ? '' : cat)}
+                  className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition ${
+                    category === cat
+                      ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                      : 'bg-slate-50 text-slate-600 border-slate-200 hover:border-blue-400 hover:text-blue-600'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Message */}
+          <div>
+            <label htmlFor="fb-message" className="block text-sm font-bold text-slate-700 mb-2">
+              Your Feedback <span className="text-rose-400">*</span>
+            </label>
+            <textarea
+              id="fb-message"
+              value={message}
+              onChange={e => setMessage(e.target.value)}
+              rows={4}
+              placeholder="Tell us about your experience — what worked well, what could be improved, or any issues you faced..."
+              required
+              className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none transition"
+            />
+          </div>
+
+          {/* Name & Email */}
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="fb-name" className="block text-xs font-bold text-slate-600 mb-1.5">Your Name</label>
+              <input
+                id="fb-name"
+                type="text"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                placeholder="e.g. Priya S."
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
+              />
+            </div>
+            <div>
+              <label htmlFor="fb-email" className="block text-xs font-bold text-slate-600 mb-1.5">Email (optional)</label>
+              <input
+                id="fb-email"
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="you@example.com"
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
+              />
+            </div>
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={!rating || !message.trim()}
+            className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm shadow-xl shadow-blue-600/25 transition transform hover:-translate-y-0.5 active:translate-y-0"
+          >
+            <Send className="w-4 h-4" />
+            Send Feedback
+          </button>
+
+          <p className="text-center text-xs text-slate-400">
+            Your feedback is confidential and used only to improve SmartTransit. We don't share your data with third parties.
+          </p>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 export const LandingPage: React.FC = () => {
   const {
@@ -523,6 +739,13 @@ export const LandingPage: React.FC = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* =====================================================================
+          7. CONTACT US & FEEDBACK SECTION
+      ====================================================================== */}
+      <section id="contact" className="py-20 sm:py-28 bg-gradient-to-b from-slate-50 to-blue-50/40">
+        <FeedbackSection />
       </section>
 
       {/* 6. FOOTER */}
