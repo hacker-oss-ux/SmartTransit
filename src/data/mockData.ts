@@ -10,7 +10,7 @@ export const initialStudent: Student = {
   year: '2nd Year (Semester IV)',
   semester: 'Semester 4',
   rollNo: '24BCA-042',
-  guardianName: 'K. Anish Kumar',
+  guardianName: 'Dummy',
   guardianPhone: '+91 98471 23456',
   guardianRelation: 'Father',
   registeredBusId: 'ST-102',
@@ -28,7 +28,7 @@ export const initialStudent: Student = {
 
 export const initialParent: Parent = {
   id: 'usr_parent_01',
-  name: 'K. Anish Kumar',
+  name: 'Dummy',
   relationship: 'Father / Primary Guardian',
   email: 'anish.kumar@smarttransit.demo',
   phone: '+91 98471 23456',
