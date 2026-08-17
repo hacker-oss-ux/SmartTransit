@@ -3,7 +3,7 @@ import type { Student, Parent, SmartCard, BusTelemetry, RouteStop, Journey, Tran
 export const initialStudent: Student = {
   id: 'usr_student_01',
   studentId: 'ST10245',
-  name: 'Ajay K Anish',
+  name: 'Ajay Girish',
   avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=240&auto=format&fit=crop&q=80',
   institution: 'St. Thomas College of Engineering & Technology',
   course: 'Bachelor of Computer Applications (BCA)',
@@ -49,7 +49,7 @@ export const initialCard: SmartCard = {
   maskedNumber: 'STC •••• 2847',
   rfidUid: '04:A2:89:1B:7F:4E',
   studentId: 'usr_student_01',
-  studentName: 'AJAY K ANISH',
+  studentName: 'AJAY GIRISH',
   balance: 420,
   status: 'ACTIVE',
   concessionType: 'STUDENT CONCESSION',
