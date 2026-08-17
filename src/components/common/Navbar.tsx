@@ -54,9 +54,6 @@ export const Navbar: React.FC = () => {
                   LIVE
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 font-medium hidden sm:block leading-none">
-                Smarter Journeys. Safer Students.
-              </p>
             </div>
           </div>
 
