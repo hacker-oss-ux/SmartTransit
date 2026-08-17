@@ -53,9 +53,9 @@ export const LandingPage: React.FC = () => {
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-950 font-heading leading-tight">
-                Smarter Journeys.{' '}
+                One Card. One Journey.{' '}
                 <span className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  Safer Students.
+                  Complete Peace of Mind.
                 </span>
               </h1>
 
@@ -68,7 +68,7 @@ export const LandingPage: React.FC = () => {
                   ✓
                 </div>
                 <p className="text-xs font-semibold text-slate-700">
-                  <span className="text-blue-700 font-bold">One Card. One Journey. Complete Peace of Mind.</span>
+                  <span className="text-blue-700 font-bold">Smarter Journeys. Safer Students.</span>
                 </p>
               </div>
 

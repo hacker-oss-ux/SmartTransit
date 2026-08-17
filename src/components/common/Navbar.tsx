@@ -55,7 +55,7 @@ export const Navbar: React.FC = () => {
                 </span>
               </div>
               <p className="text-[11px] text-slate-500 font-medium hidden sm:block leading-none">
-                One Card. One Journey. Complete Peace of Mind.
+                Smarter Journeys. Safer Students.
               </p>
             </div>
           </div>
